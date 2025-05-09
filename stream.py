@@ -32,7 +32,7 @@ def main():
             df.rename(columns={'Name':'C2P Alerts_mod'},inplace=True)
             
             st.write("Excel File Contents:", key ='first1')
-            st.write(df, , key ='first2')
+            st.write(df, key ='first2')
             
             model =load_model()
             
