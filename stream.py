@@ -62,16 +62,6 @@ def main():
 # Display the HTML in Streamlit
             st.dataframe(styled_df)
                 
-                # Provide a download button for the Excel file
-            st.download_button(
-                    label="Download Predictions as Excel",
-                    data=excel_buffer,
-                 key="predict_1",
-                    file_name='predictions.xlsx',
-                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                )
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
-
+             
 if __name__ == '__main__':
     main()
