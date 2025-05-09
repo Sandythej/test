@@ -40,7 +40,7 @@ def main():
             predictions = prediction(df[['C2P Alerts_mod','Summary']], model)
 
             # Add predictions to DataFrame
-            st.write(df, key ='first3')
+            st.write(df)
             
             df['Predictions'] = predictions
             dataset = pd.DataFrame({})
@@ -48,11 +48,6 @@ def main():
             dataset = df
             pd.set_option('display.max_colwidth', None)
             
-            excel_buffer = io.BytesIO()
-            with pd.ExcelWriter(excel_buffer, engine='openpyxl') as writer:
-                    dataset.to_excel(writer, index=False, sheet_name='Predictions')
-                
-            excel_buffer.seek(0)  # Move to the beginning of the buffer
             
             st.write("Prediction Results:")
             
