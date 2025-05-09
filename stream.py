@@ -64,7 +64,7 @@ def main():
             st.download_button(
                     label="Download Predictions as Excel",
                     data=excel_buffer,
-                    key="predict"
+                    key="predict",
                     file_name='predictions.xlsx',
                     mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
                 )
