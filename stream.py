@@ -9,6 +9,17 @@ import streamlit as st
 import warnings
 warnings.filterwarnings("ignore")
 
+import subprocess
+import streamlit as st
+
+def upgrade_streamlit():
+    result = subprocess.run(['pip', 'install', '--upgrade', 'streamlit'], capture_output=True, text=True)
+    st.write(result.stdout)
+    st.write(result.stderr)
+
+st.button('Upgrade Streamlit', on_click=upgrade_streamlit)
+
+
 @st.cache_resource
 def load_model():
     model = joblib.load('./logistic_regression_model.pkl')
