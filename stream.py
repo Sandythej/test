@@ -1,4 +1,4 @@
-from flask import Flask, request, Response,jsonify, render_template, send_file
+=''from flask import Flask, request, Response,jsonify, render_template, send_file
 import pandas as pd
 import joblib
 import os
@@ -21,7 +21,7 @@ def main():
     st.header("C2P Prediction App")
     st.subheader("Assessing alerts relevant for our products or business")
     st.write("Upload a Excel file for prediction:")
-    file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"])
+    file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"], key='one')
     
     if file is not None:
         try:
