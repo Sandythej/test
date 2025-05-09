@@ -12,6 +12,8 @@ def load_model():
     model = joblib.load('./logistic_regression_model.pkl')
     return model
 
+
+
 def prediction(text, model):
     # Assuming the model expects a list of texts for prediction
     prediction = model.predict(text)
@@ -19,6 +21,7 @@ def prediction(text, model):
 
 def main():
     st.header("C2P Prediction App")
+    st.write("Model file exists:", os.path.exists("logistic_regression_model.pkl"))
     st.subheader("Assessing alerts relevant for our products or business")
     st.write("Upload a Excel file for prediction:")
     file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"])
