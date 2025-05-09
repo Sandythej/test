@@ -60,7 +60,7 @@ def main():
             #html = styled_df.to_html()
 
 # Display the HTML in Streamlit
-            st.dataframe(styled_df, use_container_width=True)
+            st.dataframe(styled_df)
                 
                 # Provide a download button for the Excel file
             st.download_button(
