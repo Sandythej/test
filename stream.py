@@ -14,9 +14,9 @@ def load_model():
 
 
 
-def prediction(text, model):
+def prediction(input_data, model):
     # Assuming the model expects a list of texts for prediction
-    prediction = model.predict(text)
+    prediction = model.predict(input_data)
     return prediction
 
 def main():
@@ -38,9 +38,10 @@ def main():
             st.dataframe(df)
             
             model =load_model()
+            input_data = df[['C2P Alerts_mod','Summary']]
             
             # Combine the two inputs
-            predictions = prediction(df[['C2P Alerts_mod','Summary']], model)
+            predictions = prediction(input_data, model)
 
             st.write(predictions.tolist())
 
