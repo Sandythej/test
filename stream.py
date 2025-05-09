@@ -36,9 +36,7 @@ def main():
             
             df.rename(columns={'Name':'C2P Alerts_mod'},inplace=True)
             
-            st.write("Excel File Contents:")
-            st.dataframe(df)
-            
+                      
             model =load_model()
             input_data = df[['C2P Alerts_mod','Summary']]
             
