@@ -39,6 +39,8 @@ def main():
             # Combine the two inputs
             predictions = prediction(df[['C2P Alerts_mod','Summary']], model)
 
+            st.write(predictions)
+
             # Add predictions to DataFrame
             
             df['Predictions'] = predictions
