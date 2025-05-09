@@ -58,10 +58,19 @@ def main():
             styled_df = df.style.map(lambda x: f"background-color: {'green' if x == 'YES' else 'red'}", subset='Predictions')
             #styled_df = dataset.style.background_gradient(cmap='viridis')
             #html = styled_df.to_html()
-
-# Display the HTML in Streamlit
-    st.dataframe(styled_df)
+            st.dataframe(styled_df, use_container_width=True)
                 
+                # Provide a download button for the Excel file
+            st.download_button(
+                    label="Download Predictions as Excel",
+                    data=excel_buffer,
+                    key="predict"
+                    file_name='predictions.xlsx',
+                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                )
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
+
              
 if __name__ == '__main__':
     main()
