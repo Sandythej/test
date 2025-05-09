@@ -20,7 +20,7 @@ def prediction(text, model):
 def main():
     st.header("C2P Prediction App")
     st.subheader("Assessing alerts relevant for our products or business")
-    st.write("Upload a Excel file for prediction:", key ='first')
+    st.write("Upload a Excel file for prediction:")
     file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"])
     
     if file is not None:
@@ -31,8 +31,8 @@ def main():
             
             df.rename(columns={'Name':'C2P Alerts_mod'},inplace=True)
             
-            st.write("Excel File Contents:", key ='first1')
-            st.write(df, key ='first2')
+            st.write("Excel File Contents:")
+            st.write(df)
             
             model =load_model()
             
