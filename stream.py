@@ -60,7 +60,7 @@ def main():
             #html = styled_df.to_html()
 
 # Display the HTML in Streamlit
-            st.dataframe(styled_df)
+    st.dataframe(styled_df)
                 
              
 if __name__ == '__main__':
