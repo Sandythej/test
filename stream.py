@@ -6,6 +6,8 @@ import io
 import pickle
 from io import BytesIO
 import streamlit as st
+import warnings
+warnings.filterwarnings("ignore")
 
 @st.cache_resource
 def load_model():
