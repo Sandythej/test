@@ -31,7 +31,7 @@ def main():
             
             df.rename(columns={'Name':'C2P Alerts_mod'},inplace=True)
             
-            st.write("Excel File Contents:", , key ='first1')
+            st.write("Excel File Contents:", key ='first1')
             st.write(df, , key ='first2')
             
             model =load_model()
@@ -40,7 +40,7 @@ def main():
             predictions = prediction(df[['C2P Alerts_mod','Summary']], model)
 
             # Add predictions to DataFrame
-            st.write(df, , key ='first3')
+            st.write(df, key ='first3')
             
             df['Predictions'] = predictions
             dataset = pd.DataFrame({})
