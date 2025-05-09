@@ -51,10 +51,11 @@ def main():
             
             st.write("Prediction Results:")
             
-            styled_df = df.style.map(lambda x: f"background-color: {'green' if x == 'YES' else 'red'}", subset='Predictions')
-            #styled_df = dataset.style.background_gradient(cmap='viridis')
-            #html = styled_df.to_html()
-            st.write(styled_df)
+           def color_pred(val):
+            color = 'green' if val == 'YES' else 'red'
+            return f'background-color: {color}'
+        
+           st.dataframe(df.style.applymap(color_pred, subset=['Predictions']))
                 
                 
         except Exception as e:
