@@ -26,7 +26,7 @@ def main():
     st.write("Model file exists:", os.path.exists("logistic_regression_model.pkl"))
     st.subheader("Assessing alerts relevant for our products or business")
     st.write("Upload a Excel file for prediction:")
-    file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"])
+    file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"], key ='upload')
     
     if file is not None:
         try:
