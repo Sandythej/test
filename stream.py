@@ -40,6 +40,7 @@ def main():
             predictions = prediction(df[['C2P Alerts_mod','Summary']], model)
 
             # Add predictions to DataFrame
+            st.write(df)
             
             df['Predictions'] = predictions
             dataset = pd.DataFrame({})
