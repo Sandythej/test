@@ -56,12 +56,8 @@ def main():
             
             st.write("Prediction Results:")
             
-            styled_df = df.style.map(lambda x: f"background-color: {'green' if x == 'YES' else 'red'}", subset='Predictions')
-            #styled_df = dataset.style.background_gradient(cmap='viridis')
-            #html = styled_df.to_html()
+            st.dataframe(df.style.applymap(lambda x: 'background-color: green' if x == 'YES' else 'background-color: red', subset=['Predictions']))
 
-# Display the HTML in Streamlit
-            st.dataframe(styled_df)
                 
                 # Provide a download button for the Excel file
             st.download_button(
