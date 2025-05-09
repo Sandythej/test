@@ -52,9 +52,9 @@ def main():
             st.write("Prediction Results:")
             
            def color_pred(val):
-            color = 'green' if val == 'YES' else 'red'
-            return f'background-color: {color}'
-        
+                color = 'green' if val == 'YES' else 'red'
+                return f'background-color: {color}'
+            
            st.dataframe(df.style.applymap(color_pred, subset=['Predictions']))
                 
                 
