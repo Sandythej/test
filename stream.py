@@ -9,7 +9,7 @@ import streamlit as st
 
 
 def load_model():
-    model = joblib.load('model/logistic_regression_model.pkl')
+    model = joblib.load('./logistic_regression_model.pkl')
     return model
 
 def prediction(text, model):
@@ -21,7 +21,7 @@ def main():
     st.header("C2P Prediction App")
     st.subheader("Assessing alerts relevant for our products or business")
     st.write("Upload a Excel file for prediction:")
-    file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"], key='one')
+    file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"])
     
     if file is not None:
         try:
@@ -40,27 +40,38 @@ def main():
             predictions = prediction(df[['C2P Alerts_mod','Summary']], model)
 
             # Add predictions to DataFrame
-            st.write(df)
             
             df['Predictions'] = predictions
+            
             dataset = pd.DataFrame({})
             
             dataset = df
             pd.set_option('display.max_colwidth', None)
             
+            excel_buffer = io.BytesIO()
+            with pd.ExcelWriter(excel_buffer, engine='openpyxl') as writer:
+                    dataset.to_excel(writer, index=False, sheet_name='Predictions')
+                
+            excel_buffer.seek(0)  # Move to the beginning of the buffer
             
             st.write("Prediction Results:")
             
-           def color_pred(val):
-                color = 'green' if val == 'YES' else 'red'
-                return f'background-color: {color}'
-            
-           st.dataframe(df.style.applymap(color_pred, subset=['Predictions']))
+            styled_df = df.style.map(lambda x: f"background-color: {'green' if x == 'YES' else 'red'}", subset='Predictions')
+            #styled_df = dataset.style.background_gradient(cmap='viridis')
+            #html = styled_df.to_html()
+
+# Display the HTML in Streamlit
+            st.dataframe(styled_df, use_container_width=True)
                 
-                
+                # Provide a download button for the Excel file
+            st.download_button(
+                    label="Download Predictions as Excel",
+                    data=excel_buffer,
+                    file_name='predictions.xlsx',
+                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+                )
         except Exception as e:
             st.error(f"An error occurred: {e}")
 
-             
 if __name__ == '__main__':
     main()
