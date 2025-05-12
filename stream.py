@@ -20,40 +20,14 @@ def prediction(input_data, model):
     return prediction
 
 def main():
-    st.header("C2P Prediction App")
+    st.header("Email Prediction App")
     st.write("Model file exists:", os.path.exists("logistic_regression_model.pkl"))
-    st.subheader("Assessing alerts relevant for our products or business")
-    st.write("Upload a Excel file for prediction:")
-    file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"], key ='upload')
-    
-    if file is not None:
-        try:
-            df = pd.read_excel(file)
-                                  
-            df = df[['Name','Summary']]
-            
-            df.rename(columns={'Name':'C2P Alerts_mod'},inplace=True)
-            st.write(df)
-                   
-            model =load_model()
-            input_data = df[['C2P Alerts_mod','Summary']]
-            
-            # Combine the two inputs
-            predictions = prediction(input_data, model)
-
-            # Add predictions to DataFrame
-            
-            df['Predictions'] = predictions
-            
-            dataset = pd.DataFrame({})
-            
-            dataset = df
-            pd.set_option('display.max_colwidth', None)
-            
-            st.write("Prediction Results:")
-
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
+    file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"], key='upload')
+    if file:
+        df = pd.read_excel(file)
+        st.write(df.head())
+    model = load_model()
+    st.write("Model loaded:", model is not None)
 
 if __name__ == '__main__':
     main()
