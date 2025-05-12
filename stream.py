@@ -8,7 +8,7 @@ from io import BytesIO
 import streamlit as st
 import warnings
 
-model = joblib.load(./logistic_regression_model.pkl)
+model = joblib.load('./logistic_regression_model.pkl')
 st.write("Model loaded successfully!")
 
 import sklearn
