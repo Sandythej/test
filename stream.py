@@ -11,7 +11,7 @@ import warnings
 
 import joblib
 
-model_path = './logistic_regression_model.pkl'
+model_path = 'model/logistic_regression_model.pkl'
 model = joblib.load(model_path)
 st.write("Model loaded successfully!")
 
