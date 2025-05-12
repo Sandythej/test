@@ -14,8 +14,6 @@ def load_model():
     model = joblib.load('logistic_regression_model.pkl')
     return model
 
-
-
 def prediction(input_data, model):
     # Assuming the model expects a list of texts for prediction
     prediction = model.predict(input_data)
