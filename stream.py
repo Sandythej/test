@@ -33,6 +33,7 @@ def main():
             df = df[['Name','Summary']]
             
             df.rename(columns={'Name':'C2P Alerts_mod'},inplace=True)
+            st.write(df)
                    
             model =load_model()
             input_data = df[['C2P Alerts_mod','Summary']]
