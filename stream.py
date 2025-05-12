@@ -33,8 +33,7 @@ def main():
             df = df[['Name','Summary']]
             
             df.rename(columns={'Name':'C2P Alerts_mod'},inplace=True)
-            
-                      
+                   
             model =load_model()
             input_data = df[['C2P Alerts_mod','Summary']]
             
@@ -52,24 +51,10 @@ def main():
             dataset = df
             pd.set_option('display.max_colwidth', None)
             
-            excel_buffer = io.BytesIO()
-            with pd.ExcelWriter(excel_buffer, engine='openpyxl') as writer:
-                    dataset.to_excel(writer, index=False, sheet_name='Predictions')
-                
-            excel_buffer.seek(0)  # Move to the beginning of the buffer
-            
             st.write("Prediction Results:")
             
             st.dataframe(df.style.applymap(lambda x: 'background-color: green' if x == 'YES' else 'background-color: red', subset=['Predictions']))
 
-                
-                # Provide a download button for the Excel file
-            st.download_button(
-                    label="Download Predictions as Excel",
-                    data=excel_buffer, key ='three',
-                    file_name='predictions.xlsx',
-                    mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-                )
         except Exception as e:
             st.error(f"An error occurred: {e}")
 
