@@ -11,7 +11,7 @@ import warnings
 
 @st.cache_resource
 def load_model():
-    model = joblib.load('logistic_regression_model.pkl')
+    model = joblib.load('./logistic_regression_model.pkl')
     return model
 
 def prediction(input_data, model):
