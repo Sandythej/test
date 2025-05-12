@@ -52,8 +52,6 @@ def main():
             pd.set_option('display.max_colwidth', None)
             
             st.write("Prediction Results:")
-            
-            st.dataframe(df.style.applymap(lambda x: 'background-color: green' if x == 'YES' else 'background-color: red', subset=['Predictions']))
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
