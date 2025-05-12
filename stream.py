@@ -41,8 +41,6 @@ def main():
             # Combine the two inputs
             predictions = prediction(input_data, model)
 
-            st.write(predictions.tolist())
-
             # Add predictions to DataFrame
             
             df['Predictions'] = predictions
